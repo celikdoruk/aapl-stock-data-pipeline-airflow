@@ -28,7 +28,7 @@ def aapl_pipeline():
             if data.empty: # weekend / market holiday
                 raise AirflowSkipException("yfinance returned no data")
 
-            # XCom needs plain data, so split the DataFrame into 3 simple pieces
+            # xcom needs plain data, so split the df into 3 simple pieces
             return {
                 "index": [d.strftime("%Y-%m-%d") for d in data.index],
                 "columns": [list(col) for col in data.columns],
